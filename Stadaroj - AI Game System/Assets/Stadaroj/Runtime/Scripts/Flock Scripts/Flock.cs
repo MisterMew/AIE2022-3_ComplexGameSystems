@@ -6,7 +6,7 @@ using UnityEngine;
 /// 
 /// This script handles the flocking behaviours of agents within a scene.
 /// </summary>
-public class Flocking : MonoBehaviour
+public class Flock : MonoBehaviour
 {
     /* Variables */
     public FlockAgent agentPrefab;
@@ -24,15 +24,15 @@ public class Flocking : MonoBehaviour
     [Range(0F, 100F)]
     public float maxSpeed = 5F;
     [Range(1F, 10F)]
-    public float neighbourRadius = 1.5F;
+    public float perceptionRadius = 1.5F;
     [Range(0F, 1F)]
     public float avoidanceRadiusMultiplier = 0.5F;
 
     /* Utility Variables */
-    private float squareMaxSpeed;
-    private float squareNeighbourRadius;
-    private float squareAvoidanceRadius;
-    public float SquareAvoidanceRadius { get { return squareAvoidanceRadius; } }
+    private float sqrtMaxSpeed;
+    private float sqrtPerceptionRadius;
+    private float sqrtAvoidanceRadius;
+    public float SquareAvoidanceRadius { get { return sqrtAvoidanceRadius; } }
 
 
     /// <summary>
@@ -40,9 +40,9 @@ public class Flocking : MonoBehaviour
     /// </summary>
     void Start()
     {
-        squareMaxSpeed = Magnitude(squareMaxSpeed);
-        squareNeighbourRadius = Magnitude(squareNeighbourRadius);
-        squareAvoidanceRadius = Magnitude(squareAvoidanceRadius);
+        sqrtMaxSpeed = Magnitude(sqrtMaxSpeed);
+        sqrtPerceptionRadius = Magnitude(sqrtPerceptionRadius);
+        sqrtAvoidanceRadius = Magnitude(sqrtAvoidanceRadius);
 
         /* Spawn Agents */
         for (int i = 0; i < agentSpawnCount; i++)
@@ -71,13 +71,13 @@ public class Flocking : MonoBehaviour
             //DEMO ONLY
             agent.GetComponentInChildren<Renderer>().material.color = Color.Lerp(Color.white, Color.red, context.Count / 6F);
 
-            //Vector3 move = behaviour.CalculateMove(agent, context, this);
-            //move *= acceleration;
-            //if (move.sqrMagnitude > squareMaxSpeed)
-            //{
-            //    move = move.normalized * maxSpeed; //Reset to be exactly at the maximum speed
-            //}
-            //agent.Move(move);
+            Vector3 move = behaviour.CalculatePosition(agent, context, this);
+            move *= acceleration;
+            if (move.sqrMagnitude > sqrtMaxSpeed)
+            {
+                move = move.normalized * maxSpeed; //Reset to be exactly at the maximum speed
+            }
+            agent.Move(move);
         }
     }
 
@@ -90,7 +90,7 @@ public class Flocking : MonoBehaviour
     private List<Transform> FindNearbyObjects(FlockAgent agent)
     {
         List<Transform> context = new List<Transform>();
-        Collider[] contextColliders = Physics.OverlapSphere(agent.transform.position, neighbourRadius);
+        Collider[] contextColliders = Physics.OverlapSphere(agent.transform.position, perceptionRadius);
 
         foreach(Collider c in contextColliders) {
             if (c != agent.AgentCollider) //Saftey check for the current agents collider
