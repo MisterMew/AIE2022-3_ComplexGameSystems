@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Maths;
 
 /// <summary>
 /// Attach this script to a gameObject where you would like the flock to spawn.
@@ -9,30 +10,25 @@ using UnityEngine;
 public class Flock : MonoBehaviour
 {
     /* Variables */
-    public FlockAgent agentPrefab;
     private List<FlockAgent> agents = new List<FlockAgent>();
-    public FlockBehaviour behaviour;
+    public FlockAgent agentPrefab;
+    public FlockBehaviours behaviour;
 
-    [Header("Agent Spawning")]
-    [Range(0F, 500F)]
-    public int agentSpawnCount = 10;
+    [Header("Spawning")]
+    [SerializeField] private int agentsToSpawn;
+    [SerializeField] private Vector3 spawnBounds;
     const float agentDensity = 0.1F;
 
-    [Header("Agent Behaviours")]
-    [Range(0F, 100F)]
-    public float acceleration = 10F;
-    [Range(0F, 100F)]
-    public float maxSpeed = 5F;
-    [Range(1F, 10F)]
-    public float perceptionRadius = 1.5F;
-    [Range(0F, 1F)]
-    public float avoidanceRadiusMultiplier = 0.5F;
+    [Header("Behaviours")]
+    [SerializeField] private float acceleration = 10F;
+    [SerializeField] private float maxSpeed = 5F;
+    [SerializeField] private float perceptionRadius = 1.5F;
+    [SerializeField] private float avoidanceRadius = 0.5F;
 
     /* Utility Variables */
-    private float sqrtMaxSpeed;
-    private float sqrtPerceptionRadius;
-    private float sqrtAvoidanceRadius;
-    public float SquareAvoidanceRadius { get { return sqrtAvoidanceRadius; } }
+    public float getMaxSpeed { get { return maxSpeed; } }
+    public float mPerceptionRadius { get { return perceptionRadius; } }
+    public float mAvoidanceRadius { get { return avoidanceRadius; } }
 
 
     /// <summary>
@@ -40,23 +36,7 @@ public class Flock : MonoBehaviour
     /// </summary>
     void Start()
     {
-        sqrtMaxSpeed = Magnitude(sqrtMaxSpeed);
-        sqrtPerceptionRadius = Magnitude(sqrtPerceptionRadius);
-        sqrtAvoidanceRadius = Magnitude(sqrtAvoidanceRadius);
-
-        /* Spawn Agents */
-        for (int i = 0; i < agentSpawnCount; i++)
-        {
-            FlockAgent newAgent = Instantiate(
-                agentPrefab, 
-                Random.insideUnitSphere * agentSpawnCount * agentDensity,    //Random position within a sphere
-                Quaternion.Euler(Vector3.forward * Random.Range(0F, 360F)), //Random Rotation
-                transform //Parent
-                );
-
-            newAgent.name = "Agent" + i;
-            agents.Add(newAgent);
-        }
+        SpawnFlock(); //Spawn agents in scene
     }
 
     /// <summary>
@@ -73,7 +53,7 @@ public class Flock : MonoBehaviour
 
             Vector3 move = behaviour.CalculatePosition(agent, context, this);
             move *= acceleration;
-            if (move.sqrMagnitude > sqrtMaxSpeed)
+            if (move.sqrMagnitude > maxSpeed)
             {
                 move = move.normalized * maxSpeed; //Reset to be exactly at the maximum speed
             }
@@ -82,6 +62,28 @@ public class Flock : MonoBehaviour
     }
 
     /* Utility Functions */
+    private void SpawnFlock()
+    {
+        for (int i = 0; i < agentsToSpawn; i++)
+        {
+            //Random Position
+            Vector3 randomVector = Random.insideUnitSphere; //Within the bounds of a sphere
+            randomVector = new Vector3(randomVector.x * spawnBounds.x, randomVector.y * spawnBounds.y, randomVector.z * spawnBounds.z); //Calculate a random position within the given bounds
+
+            Vector3 spawnPosition = transform.position + randomVector; //Sum the position with the random position
+
+            //Rotation
+            //var rotation = Quaternion.Euler(0, Random.Range(0F, 360F), 0); //Create a random Rotation
+            var rotation = Quaternion.Euler(Vector3.forward * Random.Range(0F, 360F)); //Create a random Rotation
+
+            //Instantiation
+            FlockAgent newAgent = Instantiate(agentPrefab, spawnPosition, rotation, transform);
+
+            newAgent.name = "Agent" + i;
+            agents.Add(newAgent);
+        }
+    }
+
     /// <summary>
     /// Find and get all nearby objects (agents and obstacles) for each individual agent.
     /// </summary>
@@ -90,22 +92,15 @@ public class Flock : MonoBehaviour
     private List<Transform> FindNearbyObjects(FlockAgent agent)
     {
         List<Transform> context = new List<Transform>();
-        Collider[] contextColliders = Physics.OverlapSphere(agent.transform.position, perceptionRadius);
+        Collider[] neighbourColliders = Physics.OverlapSphere(agent.transform.position, MathsOperations.Square(perceptionRadius));
 
-        foreach(Collider c in contextColliders) {
-            if (c != agent.AgentCollider) //Saftey check for the current agents collider
+        
+        foreach(Collider nc in neighbourColliders) {
+            if (nc != agent.AgentCollider) //Saftey check for the current agents collider
             {
-                context.Add(c.transform);
+                context.Add(nc.transform);
             }
         }
         return context;
     }
-
-    /* Maths Functions */
-    /// <summary>
-    /// Calculate the square root of a floating point variable
-    /// </summary>
-    /// <param name="value">Target value to perform sqrt operation.</param>
-    /// <returns>The magnitude of the pass  value.</returns>
-    private float Magnitude(float value) { return value * value; }
 }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Flock/Behaviour/Alignment")]
-public class AlignmentBehaviour : FlockBehaviour
+public class AlignmentBehaviour : FlockBehaviours
 {
     /// <summary>
     /// Override the flocking behaviour by applying aligning movement to every agent based on its neighbouring agents.

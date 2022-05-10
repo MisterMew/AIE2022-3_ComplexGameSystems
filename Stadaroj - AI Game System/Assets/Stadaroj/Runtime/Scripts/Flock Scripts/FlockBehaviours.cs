@@ -1,7 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class FlockBehaviour : ScriptableObject 
+/// <summary>
+/// Used to manage and instantiate other behaviours, and apply them to the flock.
+/// </summary>
+public abstract class FlockBehaviours : ScriptableObject 
 {
     /// <summary>
     /// Empty Abstract function to calculate the position of an agent.

@@ -5,8 +5,12 @@ using UnityEngine;
 /// Calculates the average position of an agents neighbours, and tries to move to that position.
 /// </summary>
 [CreateAssetMenu(menuName = "Flock/Behaviour/Cohesion")]
-public class CohesionBehaviour : FlockBehaviour
+public class CohesionBehaviour : FlockBehaviours
 {
+    /* Variables */
+    private Vector3 currentVelocity;
+    public float agentSmoothing = 0.5F;
+
     /// <summary>
     /// Override the flocking behaviour by applying cohesive movement to every agent based on its neighbouring agents.
     /// </summary>
@@ -25,6 +29,8 @@ public class CohesionBehaviour : FlockBehaviour
         }
         cohesionPosition /= neighbours.Count;          //Divide cohesionPosition by amount of neighbours to get average
         cohesionPosition -= agent.transform.position; //Offset the cohesion position from the current agents position
+
+        cohesionPosition = Vector3.SmoothDamp(agent.transform.forward, cohesionPosition, ref currentVelocity, agentSmoothing);
 
         return cohesionPosition;
     }
