@@ -2,14 +2,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Maths;
 
-[CreateAssetMenu(menuName = "Flock/Behaviour/Seperation")]
+[CreateAssetMenu(menuName = "Flock/Boid Behaviours/Seperation")]
 public class SeperationBehaviour : FlockBehaviours
 {
     /// <summary>
     /// Override the flocking behaviour by applying seperation between every agent based on its neighbouring agents.
     /// </summary>
     /// <param name="agent">The current agent.</param>
-    /// <param name="neighbours">List of agent's current neighbours.</param>
+    /// <param name="neighbours">List of agent's current neighbours AND possible obstacles.</param>
     /// <param name="flock"></param>
     /// <returns></returns>
     public override Vector3 CalculatePosition(FlockAgent agent, List<Transform> neighbours, Flock flock)
@@ -24,7 +24,7 @@ public class SeperationBehaviour : FlockBehaviours
         foreach (Transform neighbour in neighbours) //For each neighbour in the list of neighbours
         {
             float distanceToNeighbour = Vector3.SqrMagnitude(neighbour.position - agent.transform.position); //Calculate the distance between agent and the current neighbour
-            if (distanceToNeighbour < flock.mPerceptionRadius && distanceToNeighbour > 0.001F)              //If the current neighbour is within the current agents perception radius
+            if (distanceToNeighbour < flock.mAvoidanceRadius && distanceToNeighbour > 0.001F)              //If the current neighbour is within the current agents perception radius
             {
                 /* Seperation */
                 Vector3 direction = Vector3.zero;

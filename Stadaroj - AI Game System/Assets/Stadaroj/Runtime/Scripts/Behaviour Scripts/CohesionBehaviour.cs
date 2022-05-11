@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Calculates the average position of an agents neighbours, and tries to move to that position.
 /// </summary>
-[CreateAssetMenu(menuName = "Flock/Behaviour/Cohesion")]
+[CreateAssetMenu(menuName = "Flock/Boid Behaviours/Cohesion")]
 public class CohesionBehaviour : FlockBehaviours
 {
     /* Variables */

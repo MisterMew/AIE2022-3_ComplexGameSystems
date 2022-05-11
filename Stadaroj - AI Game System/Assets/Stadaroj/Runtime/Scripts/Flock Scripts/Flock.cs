@@ -73,8 +73,8 @@ public class Flock : MonoBehaviour
             Vector3 spawnPosition = transform.position + randomVector; //Sum the position with the random position
 
             //Rotation
-            //var rotation = Quaternion.Euler(0, Random.Range(0F, 360F), 0); //Create a random Rotation
-            var rotation = Quaternion.Euler(Vector3.forward * Random.Range(0F, 360F)); //Create a random Rotation
+            //Quaternion rotation = Quaternion.Euler(0, Random.Range(0F, 360F), 0); //Create a random Rotation
+            Quaternion rotation = Quaternion.Euler(Vector3.forward * Random.Range(0F, 360F)); //Create a random Rotation
 
             //Instantiation
             FlockAgent newAgent = Instantiate(agentPrefab, spawnPosition, rotation, transform);
@@ -94,11 +94,14 @@ public class Flock : MonoBehaviour
         List<Transform> context = new List<Transform>();
         Collider[] neighbourColliders = Physics.OverlapSphere(agent.transform.position, MathsOperations.Square(perceptionRadius));
 
-        
-        foreach(Collider nc in neighbourColliders) {
+        foreach (Collider nc in neighbourColliders) {
             if (nc != agent.AgentCollider) //Saftey check for the current agents collider
             {
-                context.Add(nc.transform);
+                float distanceToNeighbour = Vector3.SqrMagnitude(nc.transform.position - agent.transform.position);
+                if (distanceToNeighbour <= perceptionRadius)
+                {
+                    context.Add(nc.transform);
+                }
             }
         }
         return context;
