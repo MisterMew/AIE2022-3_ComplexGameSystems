@@ -7,7 +7,10 @@ using UnityEngine;
 public class FlockAgent : MonoBehaviour
 {
     /* Variables */
-    Collider agentCollider;
+    private Flock agentflock;
+    public Flock AgentFlock { get { return agentflock; } } //Public accessor for agentFlock
+
+    private Collider agentCollider;
     public Collider AgentCollider { get { return agentCollider; } } //Public accessor for agentCollider
 
 
@@ -15,9 +18,14 @@ public class FlockAgent : MonoBehaviour
     /// <summary>
     /// Start is called before the first frame update 
     /// </summary>
-    void Start()
+    private void Start()
     {
         agentCollider = GetComponent<Collider>(); //Cache the agents collider
+    }
+
+    public void Initialise(Flock flock)
+    {
+        agentflock = flock;
     }
 
     /// <summary>

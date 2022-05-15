@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Maths;
 
-[CreateAssetMenu(menuName = "Flock/Boid Behaviours/Seperation")]
+[CreateAssetMenu(menuName = "Stadaroj/Boid Behaviours/Seperation")]
 public class SeperationBehaviour : FlockBehaviours
 {
     /// <summary>

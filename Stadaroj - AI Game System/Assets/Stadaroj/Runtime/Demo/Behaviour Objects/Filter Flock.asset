@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb4c29519c8a1da4a885be30235d2fc8, type: 3}
-  m_Name: Restrict Travel Distance
+  m_Script: {fileID: 11500000, guid: 0027dd5838723cc4a856d43e7c74f400, type: 3}
+  m_Name: Filter Flock
   m_EditorClassIdentifier: 
-  orbitPoint: {fileID: 4696007755126937948, guid: f2dc542bebc3db941b9a89c6899e7333, type: 3}
-  radiusFromCenter: 15

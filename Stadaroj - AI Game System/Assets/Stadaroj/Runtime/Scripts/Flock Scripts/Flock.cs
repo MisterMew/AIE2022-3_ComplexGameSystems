@@ -49,7 +49,7 @@ public class Flock : MonoBehaviour
             List<Transform> context = FindNearbyObjects(agent);
 
             //DEMO ONLY
-            agent.GetComponentInChildren<Renderer>().material.color = Color.Lerp(Color.white, Color.red, context.Count / 6F);
+            //agent.GetComponentInChildren<Renderer>().material.color = Color.Lerp(Color.white, Color.red, context.Count / 6F);
 
             Vector3 move = behaviour.CalculatePosition(agent, context, this);
             move *= acceleration;
@@ -80,6 +80,7 @@ public class Flock : MonoBehaviour
             FlockAgent newAgent = Instantiate(agentPrefab, spawnPosition, rotation, transform);
 
             newAgent.name = "Agent" + i;
+            newAgent.Initialise(this);
             agents.Add(newAgent);
         }
     }

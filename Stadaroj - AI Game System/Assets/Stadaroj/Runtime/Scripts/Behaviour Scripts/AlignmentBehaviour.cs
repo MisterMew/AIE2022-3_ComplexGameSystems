@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Flock/Boid Behaviours/Alignment")]
+[CreateAssetMenu(menuName = "Stadaroj/Boid Behaviours/Alignment")]
 public class AlignmentBehaviour : FlockBehaviours
 {
     /// <summary>

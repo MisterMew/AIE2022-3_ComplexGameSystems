@@ -5,7 +5,7 @@ using Maths;
 /// <summary>
 /// Restricts a flock from travelling too far from a desired position.
 /// </summary>
-[CreateAssetMenu(menuName = "Flock/Supporting Behaviours/Restrict Travel Distance")]
+[CreateAssetMenu(menuName = "Stadaroj/Supporting Behaviours/Restrict Travel Distance")]
 public class RestrictTravelDistance : FlockBehaviours
 {
     /* Variables */

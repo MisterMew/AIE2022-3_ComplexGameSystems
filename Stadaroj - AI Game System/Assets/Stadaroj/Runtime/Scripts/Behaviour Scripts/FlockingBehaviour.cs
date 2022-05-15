@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Maths;
 
-[CreateAssetMenu(menuName = "Flock/Flocking")]
+[CreateAssetMenu(menuName = "Stadaroj/Flocking")]
 public class FlockingBehaviour : FlockBehaviours
 {
     public FlockBehaviours[] behaviours;
