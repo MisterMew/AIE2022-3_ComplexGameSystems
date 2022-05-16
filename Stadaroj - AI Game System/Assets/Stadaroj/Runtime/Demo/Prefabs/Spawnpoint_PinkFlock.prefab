@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2162701134106232084
+--- !u!1 &3797679513571878853
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2162701134106232085}
-  - component: {fileID: 2162701134106232086}
+  - component: {fileID: 3797679513571878852}
+  - component: {fileID: 3797679513571878855}
   m_Layer: 0
-  m_Name: Spawnpoint_GreenFlock
+  m_Name: Spawnpoint_PinkFlock
   m_TagString: Untagged
-  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2162701134106232085
+--- !u!4 &3797679513571878852
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2162701134106232084}
+  m_GameObject: {fileID: 3797679513571878853}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16, y: 8, z: 16}
+  m_LocalPosition: {x: -16, y: -8, z: -16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2162701134106232086
+--- !u!114 &3797679513571878855
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2162701134106232084}
+  m_GameObject: {fileID: 3797679513571878853}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e54ce732e3caf3b479467c0395ab575f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentPrefab: {fileID: 1767716363383522081, guid: 41ac15ca6a7aae94783de538f867722d, type: 3}
+  agentPrefab: {fileID: 3051094963511615188, guid: f01f1702836c2a84b9362bb337b5bfc6, type: 3}
   behaviour: {fileID: 11400000, guid: 7c1a2dddbf6184d4caed5e91ba0fa308, type: 2}
-  agentsToSpawn: 1000
-  spawnBounds: {x: 16, y: 4, z: 16}
-  acceleration: 10
-  maxSpeed: 2
+  agentsToSpawn: 768
+  spawnBounds: {x: 16, y: 1, z: 16}
+  acceleration: 8
+  maxSpeed: 1.5
   perceptionRadius: 1
   avoidanceRadius: 0.5

@@ -16,6 +16,7 @@ public class Flock : MonoBehaviour
 
     [Header("Spawning")]
     [SerializeField] private int agentsToSpawn;
+    [Tooltip("Spawns within this radius at this gameobjects transform")]
     [SerializeField] private Vector3 spawnBounds;
     const float agentDensity = 0.1F;
 
@@ -28,7 +29,7 @@ public class Flock : MonoBehaviour
     /* Utility Variables */
     public float getMaxSpeed { get { return maxSpeed; } }
     public float mPerceptionRadius { get { return perceptionRadius; } }
-    public float mAvoidanceRadius { get { return avoidanceRadius; } }
+    public float mSeperationRadius { get { return avoidanceRadius; } }
 
 
     /// <summary>

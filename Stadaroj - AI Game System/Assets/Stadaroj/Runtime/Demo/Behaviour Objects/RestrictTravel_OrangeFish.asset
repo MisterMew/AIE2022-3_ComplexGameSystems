@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5e89c52e82d08642ad8fbc44898de7c, type: 3}
-  m_Name: Alignment
+  m_Script: {fileID: 11500000, guid: cb4c29519c8a1da4a885be30235d2fc8, type: 3}
+  m_Name: RestrictTravel_OrangeFish
   m_EditorClassIdentifier: 
-  behaviours: []
-  coefs: []
-  filter: {fileID: 11400000, guid: 18c2c903d4690f8458d5e94ce5794807, type: 2}
+  orbitPoint: {fileID: 3139236018465214030, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
+  radiusFromOrbitOrigin: 16

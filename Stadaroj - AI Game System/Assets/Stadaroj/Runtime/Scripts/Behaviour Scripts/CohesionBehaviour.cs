@@ -2,10 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Calculates the average position of an agents neighbours, and tries to move to that position.
+/// Behaviour that when given a list of transforms, applies the boid cohesion rule to each. 
+/// Cohesion steers the agents to move towards the average position (centre of mass) of its local flockmates.
 /// </summary>
 [CreateAssetMenu(menuName = "Stadaroj/Boid Behaviours/Cohesion")]
-public class CohesionBehaviour : FlockBehaviours
+public class CohesionBehaviour : FilteredFlockingBehaviour
 {
     /* Variables */
     private Vector3 currentVelocity;
@@ -20,10 +21,13 @@ public class CohesionBehaviour : FlockBehaviours
     /// <returns></returns>
     public override Vector3 CalculatePosition(FlockAgent agent, List<Transform> neighbours, Flock flock)
     {
+        /* Safety Check */
         if (neighbours.Count == 0) { return Vector3.zero; } //Return zero if agent has no current neighbours
 
+        /* Calculate Cohesion */
         Vector3 cohesionPosition = Vector3.zero;
-        foreach (Transform neighbour in neighbours) //For each neighbour in the list of neighbours
+        List<Transform> filteredNeighbours = (filter == null) ? neighbours : filter.Filter(agent, neighbours); //Decide whether or not to use the filtered flock 
+        foreach (Transform neighbour in filteredNeighbours) //For each neighbour in the list of neighbours
         {
             cohesionPosition += neighbour.position; //Sum the position of the current neighbour 
         }
@@ -32,6 +36,7 @@ public class CohesionBehaviour : FlockBehaviours
 
         cohesionPosition = Vector3.SmoothDamp(agent.transform.forward, cohesionPosition, ref currentVelocity, agentSmoothing);
 
+        /* Return */
         return cohesionPosition;
     }
 }

@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5e89c52e82d08642ad8fbc44898de7c, type: 3}
-  m_Name: Alignment
+  m_Script: {fileID: 11500000, guid: 9a83ed0b2c7b68647af3572e30349f32, type: 3}
+  m_Name: ObstacleSeperation
   m_EditorClassIdentifier: 
-  behaviours: []
-  coefs: []
-  filter: {fileID: 11400000, guid: 18c2c903d4690f8458d5e94ce5794807, type: 2}
+  filter: {fileID: 11400000, guid: a2716d4cab9f00446a637e75d190bdd4, type: 2}

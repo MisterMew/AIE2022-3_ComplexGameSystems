@@ -12,12 +12,12 @@ public class RestrictTravelDistance : FlockBehaviours
     [Tooltip("The transform which the flock is to orbit around.")]
     public GameObject orbitPoint;
     [Tooltip("How far from the orbit point the flock can travel.")]
-    public float radiusFromCenter;
+    public float radiusFromOrbitOrigin;
 
     public override Vector3 CalculatePosition(FlockAgent agent, List<Transform> neighbours, Flock flock)
     {
         Vector3 centerOffset = orbitPoint.transform.position - agent.transform.position;
-        float positionFromBounds = centerOffset.magnitude / radiusFromCenter; //Position from the radius bounds
+        float positionFromBounds = centerOffset.magnitude / radiusFromOrbitOrigin; //Position from the radius bounds
         
         if (positionFromBounds < 0.9F) //Within 90% of the radius bounds
         { 
