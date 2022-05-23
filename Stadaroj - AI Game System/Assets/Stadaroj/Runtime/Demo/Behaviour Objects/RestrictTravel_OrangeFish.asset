@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4c29519c8a1da4a885be30235d2fc8, type: 3}
   m_Name: RestrictTravel_OrangeFish
   m_EditorClassIdentifier: 
-  orbitPoint: {fileID: 3139236018465214030, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
-  radiusFromOrbitOrigin: 16
+  orbitPoint: {fileID: 4614337281656171701, guid: 0d1beed9a764c894c8b8f920a5240e5b, type: 3}
+  radiusFromOrbitOrigin: 18

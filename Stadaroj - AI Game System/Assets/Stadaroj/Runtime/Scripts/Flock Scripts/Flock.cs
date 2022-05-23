@@ -74,7 +74,6 @@ public class Flock : MonoBehaviour
             Vector3 spawnPosition = transform.position + randomVector; //Sum the position with the random position
 
             //Rotation
-            //Quaternion rotation = Quaternion.Euler(0, Random.Range(0F, 360F), 0); //Create a random Rotation
             Quaternion rotation = Quaternion.Euler(Vector3.forward * Random.Range(0F, 360F)); //Create a random Rotation
 
             //Instantiation

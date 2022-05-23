@@ -37,20 +37,22 @@ public class FixMeshRotationEditor : Editor
 		{
 			MeshFilter meshFilter = (MeshFilter)target;
 			Mesh mesh = meshFilter.sharedMesh;
+
 			Vector3[] vertices = mesh.vertices;
 			Vector3[] newVertices = new Vector3[vertices.Length];
 			Quaternion rotation = Quaternion.Euler(mMeshRotation.x, mMeshRotation.y, mMeshRotation.z);
+
 			for (int i = 0; i < vertices.Length; i++)
 			{
 				Vector3 vertex = vertices[i];
 				newVertices[i] = rotation * vertex;
 			}
+
 			mesh.vertices = newVertices;
 			mesh.RecalculateNormals();
 			mesh.RecalculateBounds();
 
 			EditorUtility.SetDirty(meshFilter);
-
 		}
 
 		EditorGUILayout.Space(8);

@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Filters all agents to decide if they belong to the same flock
 /// </summary>
-[CreateAssetMenu(menuName = "Stadaroj/Filters/Flock Group")]
+[CreateAssetMenu(menuName = "Stadaroj/Filters/Flock Group Fitler")]
 public class FlockFilter : NeighboursFilter
 {
     public override List<Transform> Filter(FlockAgent agent, List<Transform> originalNeighbours)

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4c29519c8a1da4a885be30235d2fc8, type: 3}
   m_Name: RestrictTravel_AquaFish
   m_EditorClassIdentifier: 
-  orbitPoint: {fileID: 8681094266071522288, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
+  orbitPoint: {fileID: 8083500752111168855, guid: abc372c2dca11454aaadfb07b303cd59, type: 3}
   radiusFromOrbitOrigin: 24
