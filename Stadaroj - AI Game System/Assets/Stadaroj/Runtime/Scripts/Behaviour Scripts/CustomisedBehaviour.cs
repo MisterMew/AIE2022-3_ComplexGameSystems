@@ -9,20 +9,20 @@ using Maths;
 [CreateAssetMenu(menuName = "Stadaroj/Custom Behaviour")]
 public class CustomisedBehaviour : FlockBehaviours
 {
-    public FlockBehaviours[] behaviours;
-    public float[] weights;
+    public List<FlockBehaviours> behaviours;
+    public List<float> weights;
 
     public override Vector3 CalculatePosition(FlockAgent agent, List<Transform> neighbours, Flock flock)
     {
         /* Error Validation Check */
-        if (weights.Length != behaviours.Length) //Validate both arrays are equal
+        if (weights.Count != behaviours.Count) //Validate both arrays are equal
         {
             Debug.LogError("Data mismatch: " + name + " has more behaviours than data.", this); //Log error to console
             return Vector3.zero; //Prevent agent movement
         }
 
         Vector3 flockMovement = Vector3.zero;
-        for (int i = 0; i < behaviours.Length; i++) //Iterate through all behaviours
+        for (int i = 0; i < behaviours.Count; i++) //Iterate through all behaviours
         {
             Vector3 partialMove = behaviours[i].CalculatePosition(agent, neighbours, flock) * weights[i];
 
@@ -43,59 +43,23 @@ public class CustomisedBehaviour : FlockBehaviours
 
     public void AddBehaviour()
     {
-        int oldCount = (behaviours != null) ? behaviours.Length : 0;
-        FlockBehaviours[] newBehaviors = new FlockBehaviours[oldCount + 1];
-        float[] newWeights = new float[oldCount + 1];
+        behaviours.Add(null); //Adds empty object to end of list
+        weights.Add(1F); //Adds empty object to end of list
+    }
 
-        for (int i = 0; i < oldCount; i++)
-        {
-            newBehaviors[i] = behaviours[i];
-            newWeights[i] = weights[i];
-        }
-
-        newWeights[oldCount] = 1f;
-        behaviours = newBehaviors;
-        weights = newWeights;
+    public void RemoveBehaviour(int index)
+    {
+        behaviours.RemoveAt(index); //Adds empty object to end of list
+        weights.RemoveAt(index); //Adds empty object to end of list
     }
 
     public void RemoveBehaviour()
     {
-        int oldCount = behaviours.Length;
-        if (oldCount == 1)
-        {
-            behaviours = null;
-            weights = null;
-            return;
-        }
-
-        FlockBehaviours[] newBehaviours = new FlockBehaviours[oldCount - 1];
-        float[] newWeights = new float[oldCount - 1];
-
-        for (int i = 0; i < oldCount - 1; i++)
-        {
-            newBehaviours[i] = behaviours[i]; //Remove the behaviour from the list
-            newWeights[i] = weights[i]; //Remove the modifier from the list
-        }
-
-        behaviours = newBehaviours;
-        weights = newWeights;
+        RemoveBehaviour(behaviours.Count - 1);
     }
 
     public void AddWeight()
     {
-        float[] newWeights = new float[behaviours.Length]; //New list of weigths
-
-        if (weights != null) //Validate current weights list isn't empty
-        {
-            for (int i = 0; i < weights.Length; i++)
-            {
-                if (weights[i] != 0F) //If the current weight is not 0
-                {
-                    newWeights[i] = weights[i]; //Add it to the list of new weights
-                }
-            }
-        }
-
-        weights = newWeights;
+        weights.Add(1F);
     }
 }
