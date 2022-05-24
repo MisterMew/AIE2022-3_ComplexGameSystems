@@ -1,3 +1,12 @@
 
-# Attach the script "Flock.cs" to the gameobject where you wish the boids to spawn.
-# Create some object behaviours 
+# STEP ONE #
+# Create or Select any gameObject to serve as a spawnpoint.
+# - Attack the script "Flock.cs" to it:
+# - - Populate 'Agent Prefab' with the desired agent/boid game object
+# - - Populate 'Behaviour' with a custom scriptable object (Create > Stadaroj)
+# - - Populate the remaining variables as desired
+
+# STEP TWO #
+# Create a custom behaviour object (Create > Stadaroj > 'CustomBehaviour')
+# Click the 'Add Behaviour' and populate with any Stadaroj Scriptable Objecvt Behaviour (you must create these manually)
+# - The weights are multipliers that control the intensity of each behaviours

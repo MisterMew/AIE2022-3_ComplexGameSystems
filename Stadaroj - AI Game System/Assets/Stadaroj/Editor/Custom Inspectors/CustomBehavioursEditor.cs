@@ -15,14 +15,13 @@ public class CustomBehavioursEditor : Editor
         cb = (CustomisedBehaviour)target;
         reorderableList = new ReorderableList(cb.behaviours, typeof(CustomisedBehaviour), true, true, true, true); //Populate the reordable list
 
-        //reorderableList.drawElementCallback += DrawElement;
+        reorderableList.drawHeaderCallback = DrawHeader; //Delegate to draw the header
+        reorderableList.drawElementCallback = DrawList; //Delegate to draw the elements on the list
     }
+
 
     public override void OnInspectorGUI()
     {
-        serializedObject.Update();
-        reorderableList.DoLayoutList(); //Draws the list
-        serializedObject.ApplyModifiedProperties();
 
         /* Validation Check */
         if (cb.behaviours == null || cb.behaviours.Length == 0)
@@ -33,8 +32,13 @@ public class CustomBehavioursEditor : Editor
         }
         else
         {
+            /* Draw Reordable List */
+            serializedObject.Update(); //Update the array property's representation in the inspector
+            reorderableList.DoLayoutList(); //Draws the reordable list
+            serializedObject.ApplyModifiedProperties(); //Applies the editor changes (Unity's way of saving changes)
+
             DrawTitles();
-            DrawFields(cb); 
+            DrawFields(cb);
         }
 
         DrawButtons();
@@ -52,6 +56,7 @@ public class CustomBehavioursEditor : Editor
 
         EditorGUILayout.EndHorizontal(); //End H draw
     }
+
 
     /// <summary>
     /// Draw the fields components for the behaviours and their respective modifiers
@@ -109,24 +114,37 @@ public class CustomBehavioursEditor : Editor
         EditorGUILayout.EndHorizontal(); //End H draw
     }
 
-    private void DrawElement(Rect rect, int index, bool active, bool focused)
+    void DrawHeader(Rect rect)
     {
-        CustomisedBehaviour currentItem = (CustomisedBehaviour)cb.behaviours[index];
-        float item = (float)cb.weights[index];
+        string name = "Custom Behaviours";
+        EditorGUI.LabelField(rect, name);
+    }
 
-        if (currentItem != null)
+    private void DrawList(Rect rect, int index, bool active, bool focused)
+    {
+        EditorGUI.BeginChangeCheck(); //Begin Change Check
+
+        if (cb.weights.Length != cb.behaviours.Length)
         {
-            EditorGUI.BeginChangeCheck(); //Begin Changes Check
-
-            ///
-            ///stuff goes here
-            ///
-
-            if (EditorGUI.EndChangeCheck())
-            {
-                EditorUtility.SetDirty(target);
-                GUIUtility.ExitGUI();
-            }
+            cb.AddWeight();
         }
+
+        EditorGUILayout.BeginHorizontal(); //Begin H draw
+        ///
+        EditorGUI.LabelField(rect, index.ToString()); //Draw label field to number elements
+        cb.behaviours[index] = (FlockBehaviours)EditorGUI.ObjectField(new Rect(rect.x + 16, rect.y, 232, EditorGUIUtility.singleLineHeight), cb.behaviours[index], typeof(FlockBehaviours), false); //Draw behaviours as ObjectField
+        cb.weights[index] = EditorGUI.FloatField(new Rect(rect.x + 256, rect.y, 64, EditorGUIUtility.singleLineHeight), cb.weights[index]); //Draw behaviour modifiers as FloatField
+        ///
+        EditorGUILayout.EndHorizontal(); //End H draw
+
+        if (EditorGUI.EndChangeCheck()) //End Change Check
+        {
+            EditorUtility.SetDirty(target);
+            GUIUtility.ExitGUI();
+        }
+    }
+
+    internal void DoAddButton(ReorderableList list, Object value) {
+        cb.AddBehaviour();
     }
 }
