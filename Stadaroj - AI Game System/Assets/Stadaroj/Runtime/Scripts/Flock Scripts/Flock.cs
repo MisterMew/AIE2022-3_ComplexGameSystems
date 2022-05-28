@@ -5,31 +5,33 @@ using Maths;
 /// <summary>
 /// Attach this script to a gameObject where you would like the flock to spawn.
 /// 
-/// This script handles the flocking behaviours of agents within a scene.
+/// Handles the agents of a flock including:
+/// - Spawning a user-defined amount in a desired radius at the position of the gameobject this script is attached to.
+/// - Checking every agent against the others within a flock and Updating their positions and behaviours
 /// </summary>
 public class Flock : MonoBehaviour
 {
     /* Variables */
     private List<FlockAgent> agents = new List<FlockAgent>();
+    [Tooltip("Prefab of the desired agent (must have 'FlockAgent' script attached)")]
     public FlockAgent agentPrefab;
+    [Tooltip("HINT: Create a 'Custom Behaviour' in order to use a combination of behaviours")]
     public FlockBehaviours behaviour;
 
     [Header("Spawning")]
     [SerializeField] private int agentsToSpawn;
-    [Tooltip("Spawns within this radius at this gameobjects transform")]
+    [Tooltip("Spawns within this radius at this gameobjects transform.")]
     [SerializeField] private Vector3 spawnBounds;
-    const float agentDensity = 0.1F;
 
     [Header("Behaviours")]
-    [SerializeField] private float acceleration = 10F;
-    [SerializeField] private float maxSpeed = 5F;
-    [SerializeField] private float perceptionRadius = 1.5F;
-    [SerializeField] private float avoidanceRadius = 0.5F;
+    [SerializeField] private float acceleration = 0F;
+    [SerializeField] private float maxSpeed = 0F;
+    [Tooltip("Used to locate an agents nearby neighbours.")]
+    [SerializeField] private float perceptionRadius = 0F;
 
     /* Utility Variables */
-    public float getMaxSpeed { get { return maxSpeed; } }
-    public float mPerceptionRadius { get { return perceptionRadius; } }
-    public float mSeperationRadius { get { return avoidanceRadius; } }
+    public float GetMaxSpeed { get { return maxSpeed; } }
+    public float GetPerceptionRadius { get { return perceptionRadius; } }
 
 
     /// <summary>
@@ -48,9 +50,6 @@ public class Flock : MonoBehaviour
         foreach(FlockAgent agent in agents) //Iterate through each agent in the list of agents
         {
             List<Transform> context = FindNearbyObjects(agent);
-
-            //DEMO ONLY
-            //agent.GetComponentInChildren<Renderer>().material.color = Color.Lerp(Color.white, Color.red, context.Count / 6F);
 
             Vector3 move = behaviour.CalculatePosition(agent, context, this);
             move *= acceleration;

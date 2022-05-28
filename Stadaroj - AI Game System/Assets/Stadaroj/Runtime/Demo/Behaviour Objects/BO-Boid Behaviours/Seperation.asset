@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Seperation
   m_EditorClassIdentifier: 
   filter: {fileID: 11400000, guid: 18c2c903d4690f8458d5e94ce5794807, type: 2}
+  seperationCoeficient: 128

@@ -2109,6 +2109,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 308275151}
     m_Modifications:
     - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
+      propertyPath: agentPrefab
+      value: 
+      objectReference: {fileID: 1767716363383522081, guid: 41ac15ca6a7aae94783de538f867722d, type: 3}
+    - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
+      propertyPath: agentsToSpawn
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
       propertyPath: avoidanceRadius
       value: 0.1
       objectReference: {fileID: 0}

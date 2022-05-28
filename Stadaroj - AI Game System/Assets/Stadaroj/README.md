@@ -1,4 +1,8 @@
 
+# !DEMO NOTE! #
+# If the fish in the demo are not facing forward, click on any of their prefabs, open the Mesh Fitler component, correct the the rotaiton (Y 90), and click 'Fix Rotation'
+
+
 # STEP ONE #
 # Create or Select any gameObject to serve as a spawnpoint.
 # - Attack the script "Flock.cs" to it:

@@ -23,7 +23,7 @@ public class FixMeshRotationEditor : Editor
 	/* Variabels */
 	private Vector3 mMeshRotation;
 
-	public override void OnInspectorGUI()
+    public override void OnInspectorGUI()
 	{
 		base.OnInspectorGUI(); //Used to draw the default inspector
 
