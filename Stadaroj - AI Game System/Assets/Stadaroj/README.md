@@ -2,7 +2,7 @@
 # STEP ONE #
 # Create or Select any gameObject to serve as a spawnpoint.
 # - Attack the script "Flock.cs" to it:
-# - - Populate 'Agent Prefab' with the desired agent/boid game object
+# - - Populate 'Agent Prefab' with the desired agent/boid game object (must have script component "Flock Agent" attached)
 # - - Populate 'Behaviour' with a custom scriptable object (Create > Stadaroj)
 # - - Populate the remaining variables as desired
 
