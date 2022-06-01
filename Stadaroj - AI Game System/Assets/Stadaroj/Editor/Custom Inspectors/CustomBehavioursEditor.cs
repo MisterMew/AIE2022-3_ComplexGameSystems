@@ -82,12 +82,12 @@ public class CustomBehavioursEditor : Editor
 
             EditorGUI.LabelField(rect, index.ToString()); //Draw label field to number elements
             cb.behaviours[index] = (FlockBehaviours)EditorGUI.ObjectField(new Rect(rect.x + 16, rect.y + contentYOffset, rect.width - 100, EditorGUIUtility.singleLineHeight), cb.behaviours[index], typeof(FlockBehaviours), false); //Draw behaviours as ObjectField
-            cb.weights[index] = EditorGUI.FloatField(new Rect(rect.width - 32, rect.y + contentYOffset, 64, EditorGUIUtility.singleLineHeight), cb.weights[index]); //Draw behaviour modifiers as FloatField
+            cb.weights[index] = (float)EditorGUI.FloatField(new Rect(rect.width - 32, rect.y + contentYOffset, 64, EditorGUIUtility.singleLineHeight), cb.weights[index]); //Draw behaviour modifiers as FloatField
 
             EditorGUILayout.EndHorizontal(); //End H draw
         }
 
-        if (EditorGUI.EndChangeCheck()) //End Change Check
+        if (EditorGUI.EndChangeCheck() || GUI.changed) //End Change Check
         {
             EditorUtility.SetDirty(target);
             GUIUtility.ExitGUI();

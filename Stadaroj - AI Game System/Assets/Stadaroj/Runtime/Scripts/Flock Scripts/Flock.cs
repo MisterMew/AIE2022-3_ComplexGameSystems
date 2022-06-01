@@ -32,13 +32,15 @@ public class Flock : MonoBehaviour
     /* Variables */
     [Header("Agent Stats")]
     [SerializeField] private float acceleration = 0F;
-    [SerializeField] private float maxSpeed = 0F;
     [SerializeField] private float perceptionRadius = 0F;
+    [SerializeField] private float maxSpeed = 0F;
+    private Vector3 velocity = Vector3.zero;
 
     /* Utility Variables */
     public float GetAcceleration { get { return acceleration; } private set { } }
-    public float GetMaxSpeed { get { return maxSpeed; } private set { } }
     public float GetPerceptionRadius { get { return perceptionRadius; } private set { } }
+    public float GetMaxSpeed { get { return maxSpeed; } }
+    public Vector3 GetVelocity { get { return velocity; } private set { } }
 
 
     [Header("Behaviour Coeficients")]
@@ -78,7 +80,7 @@ public class Flock : MonoBehaviour
         {
             List<Transform> context = FindNearbyObjects(agent);
 
-            Vector3 velocity = behaviour.UpdatePosition(agent, context, this);
+            velocity = behaviour.UpdatePosition(agent, context, this);
             velocity *= GetAcceleration;
             if (velocity.sqrMagnitude > GetMaxSpeed)
             {

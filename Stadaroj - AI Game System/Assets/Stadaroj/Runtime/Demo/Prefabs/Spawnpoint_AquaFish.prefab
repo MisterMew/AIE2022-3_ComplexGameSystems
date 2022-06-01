@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8681094266071522295}
   - component: {fileID: 4609381345381989910}
-  - component: {fileID: 1971744094}
   m_Layer: 0
   m_Name: Spawnpoint_AquaFish
   m_TagString: Untagged
@@ -44,29 +43,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54ce732e3caf3b479467c0395ab575f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 8
-  maxSpeed: 2.5
-  perceptionRadius: 1.5
-  homePosition: {fileID: 0}
-  targetPosition: {fileID: 0}
   agentPrefab: {fileID: 1767716363383522081, guid: c027d8b01014ea04388f7580f653422a, type: 3}
   behaviour: {fileID: 11400000, guid: 30cfa0313f5fffb458029c8a003d4a89, type: 2}
   agentsToSpawn: 8
   spawnBounds: {x: 16, y: 16, z: 16}
---- !u!114 &1971744094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8681094266071522288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04ca26f7e3f9e8d4ebb301144e1f4794, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   acceleration: 8
-  maxSpeed: 2.5
   perceptionRadius: 1.5
-  homePosition: {fileID: 8681094266071522288}
+  seperationCoeficient: 1
+  alignmentCoeficient: 1
+  cohesionCoeficient: 1
+  homePosition: {fileID: 0}
+  distanceFromHome: 32
+  radiusPadding: 0.9
   targetPosition: {fileID: 0}

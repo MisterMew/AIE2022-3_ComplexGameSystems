@@ -2095,32 +2095,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlockSpawnpoint_PinkFish
       objectReference: {fileID: 0}
-    - target: {fileID: 3797679513571878853, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 3797679513571878855, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
+      propertyPath: maxSpeed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3797679513571878855, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
       propertyPath: homePosition
       value: 
       objectReference: {fileID: 3610705983889018835}
-    - target: {fileID: 3797679513571878855, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
-      propertyPath: distanceFromHome
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797679513571878855, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
-      propertyPath: cohesionCoeficient
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797679513571878855, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
-      propertyPath: alignmentCoeficient
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797679513571878855, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
-      propertyPath: seperationCoeficient
-      value: 0.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 448505755, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
 --- !u!4 &2603237004961769083 stripped
 Transform:
@@ -2211,25 +2194,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 308275151}
     m_Modifications:
     - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
+      propertyPath: maxSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
       propertyPath: homePosition
       value: 
       objectReference: {fileID: 6214262907325037669}
-    - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
-      propertyPath: distanceFromHome
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
-      propertyPath: cohesionCoeficient
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
-      propertyPath: alignmentCoeficient
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
-      propertyPath: seperationCoeficient
-      value: 0.001
-      objectReference: {fileID: 0}
     - target: {fileID: 3139236018465214030, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
       propertyPath: m_Name
       value: FlockSpawnpoint_OrangeFish
@@ -2278,8 +2249,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1509829131, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
 --- !u!4 &7537210786317374116 stripped
 Transform:
@@ -2307,10 +2277,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 308275151}
     m_Modifications:
-    - target: {fileID: 1971744094, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
-      propertyPath: targetPosition
-      value: 
-      objectReference: {fileID: 1357648716}
+    - target: {fileID: 4609381345381989910, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
+      propertyPath: maxSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4609381345381989910, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
       propertyPath: homePosition
       value: 
@@ -2319,29 +2289,9 @@ PrefabInstance:
       propertyPath: targetPosition
       value: 
       objectReference: {fileID: 1357648716}
-    - target: {fileID: 4609381345381989910, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
-      propertyPath: distanceFromHome
-      value: 32
-      objectReference: {fileID: 0}
-    - target: {fileID: 4609381345381989910, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
-      propertyPath: cohesionCoeficient
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4609381345381989910, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
-      propertyPath: alignmentCoeficient
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4609381345381989910, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
-      propertyPath: seperationCoeficient
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8681094266071522288, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
       propertyPath: m_Name
       value: FlockSpawnpoint_AquaFish
-      objectReference: {fileID: 0}
-    - target: {fileID: 8681094266071522288, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8681094266071522295, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
       propertyPath: m_RootOrder
@@ -2387,8 +2337,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1971744094, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
 --- !u!4 &8681094267555777876 stripped
 Transform:

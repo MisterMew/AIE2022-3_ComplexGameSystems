@@ -2,11 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Maths;
 
-
-[CreateAssetMenu(menuName = "Stadaroj/Boid Behaviours/Seek")]
-public class SeekBehaviour : FilteredFlockingBehaviour
+[CreateAssetMenu(menuName = "Stadaroj/Boid Behaviours/Flee")]
+public class FleeBehaviour : FilteredFlockingBehaviour
 {
-    public override Vector3 UpdatePosition(FlockAgent agent, List<Transform> neighbours, Flock flock) 
+    public override Vector3 UpdatePosition(FlockAgent agent, List<Transform> neighbours, Flock flock)
     {
         if (flock.targetPosition == null) { return Vector3.zero; } //Validate targetToSeek
 
@@ -15,6 +14,6 @@ public class SeekBehaviour : FilteredFlockingBehaviour
 
         float currentPosition = distance.magnitude;
 
-        return distance * MathsOperations.Square(currentPosition);
+        return distance * -MathsOperations.Square(currentPosition);
     }
 }
