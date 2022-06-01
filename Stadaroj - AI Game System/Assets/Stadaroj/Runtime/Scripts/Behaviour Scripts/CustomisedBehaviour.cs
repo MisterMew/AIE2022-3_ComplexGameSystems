@@ -12,7 +12,7 @@ public class CustomisedBehaviour : FlockBehaviours
     public List<FlockBehaviours> behaviours;
     public List<float> weights;
 
-    public override Vector3 CalculatePosition(FlockAgent agent, List<Transform> neighbours, Flock flock)
+    public override Vector3 UpdatePosition(FlockAgent agent, List<Transform> neighbours, Flock flock)
     {
         /* Error Validation Check */
         if (weights.Count != behaviours.Count) //Validate both arrays are equal
@@ -24,7 +24,7 @@ public class CustomisedBehaviour : FlockBehaviours
         Vector3 flockMovement = Vector3.zero;
         for (int i = 0; i < behaviours.Count; i++) //Iterate through all behaviours
         {
-            Vector3 partialMove = behaviours[i].CalculatePosition(agent, neighbours, flock) * weights[i];
+            Vector3 partialMove = behaviours[i].UpdatePosition(agent, neighbours, flock) * weights[i];
 
             if (partialMove != Vector3.zero) //If some movement exists
             {

@@ -19,7 +19,7 @@ public class CohesionBehaviour : FilteredFlockingBehaviour
     /// <param name="neighbours">List of agent's current neighbours.</param>
     /// <param name="flock"></param>
     /// <returns></returns>
-    public override Vector3 CalculatePosition(FlockAgent agent, List<Transform> neighbours, Flock flock)
+    public override Vector3 UpdatePosition(FlockAgent agent, List<Transform> neighbours, Flock flock)
     {
         /* Safety Check */
         if (neighbours.Count == 0) { return Vector3.zero; } //Return zero if agent has no current neighbours
@@ -37,6 +37,6 @@ public class CohesionBehaviour : FilteredFlockingBehaviour
         cohesionPosition = Vector3.SmoothDamp(agent.transform.forward, cohesionPosition, ref currentVelocity, agentSmoothing);
 
         /* Return */
-        return cohesionPosition;
+        return cohesionPosition * flock.cohesionCoeficient;
     }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3139236018465214031}
   - component: {fileID: 3139236018465214028}
+  - component: {fileID: 1509829131}
   m_Layer: 0
   m_Name: Spawnpoint_OrangeFlock
   m_TagString: Untagged
@@ -43,11 +44,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54ce732e3caf3b479467c0395ab575f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acceleration: 8
+  maxSpeed: 4
+  perceptionRadius: 3
+  homePosition: {fileID: 0}
+  targetPosition: {fileID: 0}
   agentPrefab: {fileID: 1767716363383522081, guid: 41ac15ca6a7aae94783de538f867722d, type: 3}
   behaviour: {fileID: 11400000, guid: e6882db3827508842a43cbcf80522ad4, type: 2}
-  agentsToSpawn: 768
+  agentsToSpawn: 512
   spawnBounds: {x: 6, y: 6, z: 6}
+--- !u!114 &1509829131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3139236018465214030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ca26f7e3f9e8d4ebb301144e1f4794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   acceleration: 8
   maxSpeed: 4
   perceptionRadius: 1
-  avoidanceRadius: 1
+  homePosition: {fileID: 0}
+  targetPosition: {fileID: 0}

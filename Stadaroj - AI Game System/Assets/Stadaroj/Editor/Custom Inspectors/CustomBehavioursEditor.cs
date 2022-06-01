@@ -8,6 +8,7 @@ public class CustomBehavioursEditor : Editor
     /* Variables */
     private CustomisedBehaviour cb;
     private ReorderableList reorderableList;
+    private float contentYOffset = 2.5F;
 
     private void OnEnable()
     {
@@ -80,8 +81,8 @@ public class CustomBehavioursEditor : Editor
             EditorGUILayout.BeginHorizontal(); //Begin H draw
 
             EditorGUI.LabelField(rect, index.ToString()); //Draw label field to number elements
-            cb.behaviours[index] = (FlockBehaviours)EditorGUI.ObjectField(new Rect(rect.x + 16, rect.y, rect.width - 100, EditorGUIUtility.singleLineHeight), cb.behaviours[index], typeof(FlockBehaviours), false); //Draw behaviours as ObjectField
-            cb.weights[index] = EditorGUI.FloatField(new Rect(rect.width - 32, rect.y, 64, EditorGUIUtility.singleLineHeight), cb.weights[index]); //Draw behaviour modifiers as FloatField
+            cb.behaviours[index] = (FlockBehaviours)EditorGUI.ObjectField(new Rect(rect.x + 16, rect.y + contentYOffset, rect.width - 100, EditorGUIUtility.singleLineHeight), cb.behaviours[index], typeof(FlockBehaviours), false); //Draw behaviours as ObjectField
+            cb.weights[index] = EditorGUI.FloatField(new Rect(rect.width - 32, rect.y + contentYOffset, 64, EditorGUIUtility.singleLineHeight), cb.weights[index]); //Draw behaviour modifiers as FloatField
 
             EditorGUILayout.EndHorizontal(); //End H draw
         }

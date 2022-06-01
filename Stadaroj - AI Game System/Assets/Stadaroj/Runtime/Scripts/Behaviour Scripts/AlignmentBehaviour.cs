@@ -15,7 +15,7 @@ public class AlignmentBehaviour : FilteredFlockingBehaviour
     /// <param name="neighbours">List of agent's current neighbours.</param>
     /// <param name="flock"></param>
     /// <returns></returns>
-    public override Vector3 CalculatePosition(FlockAgent agent, List<Transform> neighbours, Flock flock)
+    public override Vector3 UpdatePosition(FlockAgent agent, List<Transform> neighbours, Flock flock)
     {
         /* Safety Check */
         if (neighbours.Count == 0) { return agent.transform.forward; } //Return agents current direction if no neighbours exist
@@ -30,6 +30,6 @@ public class AlignmentBehaviour : FilteredFlockingBehaviour
         alignmentPosition /= neighbours.Count;          //Divide alignmentPosition by amount of neighbours to get average (normalised magnitude of 1)
 
         /* Return */
-        return alignmentPosition;
+        return alignmentPosition * flock.alignmentCoeficient;
     }
 }

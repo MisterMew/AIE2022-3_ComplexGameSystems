@@ -10,7 +10,6 @@ using Maths;
 public class SeperationBehaviour : FilteredFlockingBehaviour
 {
     /* Variables */
-    [SerializeField] private float seperationCoeficient = 0;
     private Vector3 previousPosition = Vector3.zero;
 
     /// <summary>
@@ -20,7 +19,7 @@ public class SeperationBehaviour : FilteredFlockingBehaviour
     /// <param name="neighbours">List of agent's current neighbours AND possible obstacles.</param>
     /// <param name="flock"></param>
     /// <returns></returns>
-    public override Vector3 CalculatePosition(FlockAgent agent, List<Transform> neighbours, Flock flock)
+    public override Vector3 UpdatePosition(FlockAgent agent, List<Transform> neighbours, Flock flock)
     {
         /* Safety Check */
         if (neighbours.Count == 0) { return Vector3.zero; } //Return zero if agent has no current neighbours
@@ -60,6 +59,6 @@ public class SeperationBehaviour : FilteredFlockingBehaviour
             seperationSteer = Vector3.Normalize(seperationSteer);                                //Normalize steering
         }
 
-        return seperationSteer * seperationCoeficient;
+        return seperationSteer * flock.seperationCoeficient;
     }
 }

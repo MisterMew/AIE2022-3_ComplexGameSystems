@@ -9,29 +9,56 @@ using Maths;
 /// - Spawning a user-defined amount in a desired radius at the position of the gameobject this script is attached to.
 /// - Checking every agent against the others within a flock and Updating their positions and behaviours
 /// </summary>
-public class Flock : MonoBehaviour
+public class Flock : MonoBehaviour 
 {
     /* Variables */
     private List<FlockAgent> agents = new List<FlockAgent>();
+
+    [Header("Agents")]
     [Tooltip("Prefab of the desired agent (must have 'FlockAgent' script attached)")]
     public FlockAgent agentPrefab;
+
     [Tooltip("HINT: Create a 'Custom Behaviour' in order to use a combination of behaviours")]
     public FlockBehaviours behaviour;
 
+
     [Header("Spawning")]
     [SerializeField] private int agentsToSpawn;
+
     [Tooltip("Spawns within this radius at this gameobjects transform.")]
     [SerializeField] private Vector3 spawnBounds;
 
-    [Header("Behaviours")]
+
+    /* Variables */
+    [Header("Agent Stats")]
     [SerializeField] private float acceleration = 0F;
     [SerializeField] private float maxSpeed = 0F;
-    [Tooltip("Used to locate an agents nearby neighbours.")]
     [SerializeField] private float perceptionRadius = 0F;
 
     /* Utility Variables */
-    public float GetMaxSpeed { get { return maxSpeed; } }
-    public float GetPerceptionRadius { get { return perceptionRadius; } }
+    public float GetAcceleration { get { return acceleration; } private set { } }
+    public float GetMaxSpeed { get { return maxSpeed; } private set { } }
+    public float GetPerceptionRadius { get { return perceptionRadius; } private set { } }
+
+
+    [Header("Behaviour Coeficients")]
+    public float seperationCoeficient = 1F;
+    public float alignmentCoeficient = 1F;
+    public float cohesionCoeficient = 1F;
+
+    [Header("Flock Positions")]
+    [Tooltip("The transform the flock will remain nearby.")]
+    public GameObject homePosition = null;
+
+    [Tooltip("The distance away from the home position, that the flock can travel.")]
+    public float distanceFromHome;
+
+    [Tooltip("The percentage of leway within the radius' boundraries. Default: (0.9F = 90%)")]
+    public float radiusPadding = 0.9F;
+
+    [Header("Targeting")]
+    [Tooltip("The transform the flock will target when seeking or fleeing.")]
+    public GameObject targetPosition = null;
 
 
     /// <summary>
@@ -51,13 +78,13 @@ public class Flock : MonoBehaviour
         {
             List<Transform> context = FindNearbyObjects(agent);
 
-            Vector3 move = behaviour.CalculatePosition(agent, context, this);
-            move *= acceleration;
-            if (move.sqrMagnitude > maxSpeed)
+            Vector3 velocity = behaviour.UpdatePosition(agent, context, this);
+            velocity *= GetAcceleration;
+            if (velocity.sqrMagnitude > GetMaxSpeed)
             {
-                move = move.normalized * maxSpeed; //Reset to be exactly at the maximum speed
+                velocity = velocity.normalized * GetMaxSpeed; //Reset to be exactly at the maximum speed
             }
-            agent.Move(move);
+            agent.Move(velocity);
         }
     }
 
@@ -92,13 +119,13 @@ public class Flock : MonoBehaviour
     private List<Transform> FindNearbyObjects(FlockAgent agent)
     {
         List<Transform> context = new List<Transform>();
-        Collider[] neighbourColliders = Physics.OverlapSphere(agent.transform.position, MathsOperations.Square(perceptionRadius));
+        Collider[] neighbourColliders = Physics.OverlapSphere(agent.transform.position, MathsOperations.Square(GetPerceptionRadius));
 
         foreach (Collider nc in neighbourColliders) {
             if (nc != agent.AgentCollider) //Saftey check for the current agents collider
             {
                 float distanceToNeighbour = Vector3.SqrMagnitude(nc.transform.position - agent.transform.position);
-                if (distanceToNeighbour <= perceptionRadius)
+                if (distanceToNeighbour <= GetPerceptionRadius)
                 {
                     context.Add(nc.transform);
                 }
