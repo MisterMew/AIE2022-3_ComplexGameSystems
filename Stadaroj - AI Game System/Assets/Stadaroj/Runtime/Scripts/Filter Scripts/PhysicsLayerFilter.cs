@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 
+/// Filters a flock to check if it shares a layer with the selected layer
 /// </summary>
 [CreateAssetMenu(menuName = "Stadaroj/Filters/Physics Layer Filter")]
 public class PhysicsLayerFilter : NeighboursFilter

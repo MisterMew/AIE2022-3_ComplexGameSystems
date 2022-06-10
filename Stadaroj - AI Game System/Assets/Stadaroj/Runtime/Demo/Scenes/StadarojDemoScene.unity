@@ -2057,7 +2057,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797679513571878852, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12
+      value: -9.5
       objectReference: {fileID: 0}
     - target: {fileID: 3797679513571878852, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2096,13 +2096,49 @@ PrefabInstance:
       value: FlockSpawnpoint_PinkFish
       objectReference: {fileID: 0}
     - target: {fileID: 3797679513571878855, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
+      propertyPath: col.a
+      value: 0.36078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797679513571878855, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
+      propertyPath: col.b
+      value: 0.6901961
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797679513571878855, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
+      propertyPath: col.g
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797679513571878855, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
+      propertyPath: col.r
+      value: 0.7568628
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797679513571878855, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
       propertyPath: maxSpeed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797679513571878855, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
+      propertyPath: spawnRadius
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3797679513571878855, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
       propertyPath: homePosition
       value: 
       objectReference: {fileID: 3610705983889018835}
+    - target: {fileID: 3797679513571878855, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
+      propertyPath: gizmoColour.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797679513571878855, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
+      propertyPath: gizmoColour.b
+      value: 0.6901961
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797679513571878855, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
+      propertyPath: gizmoColour.g
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797679513571878855, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
+      propertyPath: gizmoColour.r
+      value: 0.7568628
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f2eebd513f68d94b9d954ae1466171d, type: 3}
 --- !u!4 &2603237004961769083 stripped
@@ -2194,13 +2230,49 @@ PrefabInstance:
     m_TransformParent: {fileID: 308275151}
     m_Modifications:
     - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
+      propertyPath: col.a
+      value: 0.45490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
+      propertyPath: col.b
+      value: 0.50787646
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
+      propertyPath: col.g
+      value: 0.7314827
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
+      propertyPath: col.r
+      value: 0.9528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
       propertyPath: maxSpeed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
+      propertyPath: spawnRadius
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
       propertyPath: homePosition
       value: 
       objectReference: {fileID: 6214262907325037669}
+    - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
+      propertyPath: gizmoColour.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
+      propertyPath: gizmoColour.b
+      value: 0.20784315
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
+      propertyPath: gizmoColour.g
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139236018465214028, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
+      propertyPath: gizmoColour.r
+      value: 0.93725497
+      objectReference: {fileID: 0}
     - target: {fileID: 3139236018465214030, guid: 7ebb1ceef0947fb4d9b8495873f55232, type: 3}
       propertyPath: m_Name
       value: FlockSpawnpoint_OrangeFish
@@ -2278,13 +2350,49 @@ PrefabInstance:
     m_TransformParent: {fileID: 308275151}
     m_Modifications:
     - target: {fileID: 4609381345381989910, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
+      propertyPath: col.a
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609381345381989910, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
+      propertyPath: col.b
+      value: 0.6666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609381345381989910, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
+      propertyPath: col.g
+      value: 0.7568628
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609381345381989910, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
+      propertyPath: col.r
+      value: 0.30980393
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609381345381989910, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
       propertyPath: maxSpeed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609381345381989910, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
+      propertyPath: spawnRadius
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4609381345381989910, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
       propertyPath: homePosition
       value: 
       objectReference: {fileID: 1357648716}
+    - target: {fileID: 4609381345381989910, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
+      propertyPath: gizmoColour.a
+      value: 0.50980395
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609381345381989910, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
+      propertyPath: gizmoColour.b
+      value: 0.6156863
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609381345381989910, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
+      propertyPath: gizmoColour.g
+      value: 0.7019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609381345381989910, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
+      propertyPath: gizmoColour.r
+      value: 0.23529413
+      objectReference: {fileID: 0}
     - target: {fileID: 4609381345381989910, guid: 94920cb8a45f5f14282b29f1cf581d50, type: 3}
       propertyPath: targetPosition
       value: 

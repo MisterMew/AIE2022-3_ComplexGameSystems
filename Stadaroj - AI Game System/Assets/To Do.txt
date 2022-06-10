@@ -1,6 +1,0 @@
-
-# TO DO #
-
-# Fix module list editor layout
-# Fix collisions with obstacles
-# Fix target following

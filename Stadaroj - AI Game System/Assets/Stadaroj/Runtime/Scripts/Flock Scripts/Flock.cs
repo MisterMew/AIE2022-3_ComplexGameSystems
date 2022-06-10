@@ -26,7 +26,9 @@ public class Flock : MonoBehaviour
     [SerializeField] private int agentsToSpawn;
 
     [Tooltip("Spawns within this radius at this gameobjects transform.")]
-    [SerializeField] private Vector3 spawnBounds;
+    [SerializeField] private float spawnRadius;
+    [Tooltip("The colour of the gizmo showing the spawn bounds. (Scene View Only)")]
+    [SerializeField] private Color gizmoColour;
 
 
     /* Variables */
@@ -76,6 +78,8 @@ public class Flock : MonoBehaviour
     /// </summary>
     void Update()
     {
+        OnDrawGizmos();
+
         foreach(FlockAgent agent in agents) //Iterate through each agent in the list of agents
         {
             List<Transform> context = FindNearbyObjects(agent);
@@ -90,6 +94,15 @@ public class Flock : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Draw scene gizmos for ease of use
+    /// </summary>
+    void OnDrawGizmos()
+    {
+        Gizmos.color = gizmoColour; //Set gizmo colour
+        Gizmos.DrawWireSphere(transform.position, spawnRadius); 
+    }
+
     /* Utility Functions */
     private void SpawnFlock()
     {
@@ -97,7 +110,8 @@ public class Flock : MonoBehaviour
         {
             //Random Position
             Vector3 randomVector = Random.insideUnitSphere; //Within the bounds of a sphere
-            randomVector = new Vector3(randomVector.x * spawnBounds.x, randomVector.y * spawnBounds.y, randomVector.z * spawnBounds.z); //Calculate a random position within the given bounds
+            randomVector = MathsOperations.Vector3Scale(randomVector, spawnRadius);
+            //randomVector = new Vector3(randomVector.x * spawnBounds.x, randomVector.y * spawnBounds.y, randomVector.z * spawnBounds.z); //Calculate a random position within the given bounds
 
             Vector3 spawnPosition = transform.position + randomVector; //Sum the position with the random position
 
