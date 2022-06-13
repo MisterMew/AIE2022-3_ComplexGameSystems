@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: FilteredFlocking_PinkFish
   m_EditorClassIdentifier: 
   behaviours:
+  - {fileID: 11400000, guid: 7991ab9867c89df41af3ea2c7a40b133, type: 2}
   - {fileID: 11400000, guid: 4ab297e120327be4cb083c09ae370acd, type: 2}
   - {fileID: 11400000, guid: 3894466453699114bb96af1d5a750660, type: 2}
   - {fileID: 11400000, guid: e17a4d785d9dcc4449e3ada99ea876b3, type: 2}
   - {fileID: 11400000, guid: 70d67f907635ae945bc0e9b713e8ed75, type: 2}
-  - {fileID: 11400000, guid: 7991ab9867c89df41af3ea2c7a40b133, type: 2}
   weights:
   - 1
-  - 24
-  - 16
-  - 8
-  - 0.5
+  - 1
+  - 1
+  - 1
+  - 0.1

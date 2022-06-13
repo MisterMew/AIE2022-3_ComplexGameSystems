@@ -78,8 +78,6 @@ public class Flock : MonoBehaviour
     /// </summary>
     void Update()
     {
-        OnDrawGizmos();
-
         foreach(FlockAgent agent in agents) //Iterate through each agent in the list of agents
         {
             List<Transform> context = FindNearbyObjects(agent);

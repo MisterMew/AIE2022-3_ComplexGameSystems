@@ -9,9 +9,15 @@ using Maths;
 [CreateAssetMenu(menuName = "Stadaroj/Custom Behaviour")]
 public class CustomisedBehaviour : FlockBehaviours
 {
+    /* Variables */
+    [Tooltip("The individual behaviours that will be combined.")]
     public List<FlockBehaviours> behaviours;
+    [Tooltip("The strength of the behaviour.")]
     public List<float> weights;
 
+    /// <summary>
+    /// Update the position of each agent in the flock
+    /// </summary>
     public override Vector3 UpdatePosition(FlockAgent agent, List<Transform> neighbours, Flock flock)
     {
         /* Error Validation Check */
@@ -49,8 +55,8 @@ public class CustomisedBehaviour : FlockBehaviours
 
     public void RemoveBehaviour(int index)
     {
-        behaviours.RemoveAt(index); //Adds empty object to end of list
-        weights.RemoveAt(index); //Adds empty object to end of list
+        behaviours.RemoveAt(index); //Removes empty object to end of list
+        weights.RemoveAt(index); //Removes empty object to end of list
     }
 
     public void RemoveBehaviour()
