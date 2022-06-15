@@ -25,22 +25,13 @@ public class CustomBehavioursEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        /* Validation Check */
-        if (cb.behaviours == null || cb.behaviours.Count == 0)
+        /* Create List */
+        serializedObject.Update(); //Update the array property's representation in the inspector
+        if (reorderableList != null)
         {
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.HelpBox("No behaviours in array.", MessageType.Warning);
-            EditorGUILayout.EndHorizontal();
+            reorderableList.DoLayoutList(); //Draws the reordable list
         }
-        else
-        {
-            serializedObject.Update(); //Update the array property's representation in the inspector
-            if (reorderableList != null)
-            {
-                reorderableList.DoLayoutList(); //Draws the reordable list
-            }
-            serializedObject.ApplyModifiedProperties(); //Applies the editor changes (Unity's way of saving changes)
-        }
+        serializedObject.ApplyModifiedProperties(); //Applies the editor changes (Unity's way of saving changes)
     }
 
     /// <summary>
